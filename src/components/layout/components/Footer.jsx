@@ -1,11 +1,12 @@
-import React, { Fragment } from 'react';
+import React from "react";
+import { Layout } from "antd";
 
 const Footer = () => {
-    return (
-        <Fragment>
-           <h3>Footer</h3>
-        </Fragment>
-    )
-}
+  return (
+    <Layout.Footer>
+      <h3>Footer</h3>
+    </Layout.Footer>
+  );
+};
 
-export default Footer
+export default Footer;

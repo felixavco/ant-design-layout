@@ -1,8 +1,17 @@
 import React from "react";
-import './styles/navbar.less';
-import { Row, Col, Icon, Avatar, Popover, Divider, Typography } from "antd";
+import {
+  Row,
+  Col,
+  Icon,
+  Avatar,
+  Popover,
+  Divider,
+  Typography,
+  Layout
+} from "antd";
 import { Link } from "react-router-dom";
 const { Title, Text } = Typography;
+const { Header } = Layout;
 
 const text = <span>Opciones</span>;
 const content = (
@@ -27,29 +36,31 @@ const content = (
 
 const Navbar = () => {
   return (
-    <Row type="flex" justify="space-between" align="middle">
-      <Col span={2}>
-        <Title level={3} style={{ margin: "0" }} type="secondary">
-          <Icon type="menu-fold" />
-        </Title>
-      </Col>
-      <Col span={10}>
-        <Row type="flex" justify="end">
-          <Col>
-            <Popover
-              placement="bottomRight"
-              title={text}
-              content={content}
-              trigger="hover"
-            >
-              <Text strong>Joe Doe</Text>
-              &nbsp;
-              <Avatar size="large" icon="user" />
-            </Popover>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+    <Header style={{ background: "#fff" }}>
+      <Row type="flex" justify="space-between" align="middle">
+        <Col span={2}>
+          <Title style={{ margin: 0 }} type="secondary">
+            Logo
+          </Title>
+        </Col>
+        <Col span={10}>
+          <Row type="flex" justify="end">
+            <Col>
+              <Popover
+                placement="bottomRight"
+                title={text}
+                content={content}
+                trigger="hover"
+              >
+                <Text strong>Joe Doe</Text>
+                &nbsp;
+                <Avatar size="large" icon="user" />
+              </Popover>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </Header>
   );
 };
 

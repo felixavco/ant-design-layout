@@ -1,8 +1,7 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense } from "react";
 import Navbar from "./components/Navbar";
-import AppFooter from "./components/Footer";
-// import SearchModal from "./components/SearchModal";
-import SideMenu from "./components/SideMenu";
+import Footer from "./components/Footer";
+import Sidebar from "./components/Sidebar";
 import Loader from "../commons/loader/Loader";
 import ErrorBoundary from "../commons/errorPages/ErrorBoundary";
 import { BrowserRouter, Switch } from "react-router-dom";
@@ -11,14 +10,12 @@ import { Provider } from "react-redux";
 import { HotKeys } from "react-hotkeys";
 import { CHANGE_SEARCH_MODAL_STATE } from "../../redux/types";
 import { Layout as AntLayout } from "antd";
-const { Header, Footer, Sider, Content } = AntLayout;
-
-const keyMap = {
-  OPEN_MODAL_SEARCH: "ctrl+b"
-};
+const { Content } = AntLayout;
 
 const Layout = ({ children }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const keyMap = {
+    OPEN_MODAL_SEARCH: "ctrl+b"
+  };
 
   const handlers = {
     OPEN_MODAL_SEARCH: () => {
@@ -29,32 +26,23 @@ const Layout = ({ children }) => {
     }
   };
 
+  const loader = <Loader fullPage={true} />;
+
   return (
     <Provider store={store}>
       <ErrorBoundary>
         <BrowserRouter>
           <HotKeys keyMap={keyMap} handlers={handlers}>
             <AntLayout>
-              <Sider
-                collapsible
-                collapsed={isCollapsed}
-                onCollapse={() => setIsCollapsed(!isCollapsed)}
-                style={{ height: "100vh" }}
-              >
-                <SideMenu />
-              </Sider>
+              <Sidebar />
               <AntLayout>
-                <Header style={{ background: "#fff" }}>
-                  <Navbar />
-                </Header>
+                <Navbar />
                 <Switch>
-                  <Suspense fallback={<Loader fullPage={true} />}>
+                  <Suspense fallback={loader}>
                     <Content>{children}</Content>
                   </Suspense>
                 </Switch>
-                <Footer>
-                  <AppFooter />
-                </Footer>
+                <Footer />
               </AntLayout>
             </AntLayout>
           </HotKeys>
