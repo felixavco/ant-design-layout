@@ -1,23 +1,23 @@
 import React from "react";
-import { Table, Row, Col } from "antd";
+import { Table } from "antd";
 
-const CustomersTable = ({ data }) => {
+const CustomersTable = ({ data, getId }) => {
   const columns = [
     {
-        title: "Numero Cliente",
-        dataIndex: "id",
-        render: text => (
-          <span
-            style={{ cursor: "pointer", color: "#3498DB" }}
-            onClick={e => console.log(data)}
-          >
-            {text}
-          </span>
-        )
-      },
+      title: "Numero Cliente",
+      dataIndex: "id",
+      render: text => (
+        <span
+          style={{ cursor: "pointer", color: "#3498DB" }}
+          onClick={() => getId(parseInt(text))}
+        >
+          {text}
+        </span>
+      )
+    },
     {
       title: "Name",
-      dataIndex: "name",
+      dataIndex: "name"
     },
     {
       title: "Email",
@@ -34,19 +34,15 @@ const CustomersTable = ({ data }) => {
   ];
 
   return (
-    <Row type="flex" justify="center">
-      <Col span={23}>
-        <Table
-          style={{ background: "#fff" }}
-          rowKey="id"
-          columns={columns}
-          dataSource={data}
-          title={() => "Customers"}
-          bordered={true}
-          size="small"
-        />
-      </Col>
-    </Row>
+    <Table
+      style={{ background: "#fff" }}
+      rowKey="id"
+      columns={columns}
+      dataSource={data}
+      title={() => "Customers"}
+      bordered={true}
+      size="small"
+    />
   );
 };
 

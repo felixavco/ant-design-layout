@@ -1,21 +1,44 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import Loader from "../../commons/loader/Loader";
 import CustomersTable from "./CustomersTable";
-
+import SidebarModal from "./SidebarModal";
 import { connect } from "react-redux";
 import { getCustomers } from "../../../redux/actions/customer.actions";
 
 const Customers = ({ getCustomers, customers }) => {
-  // const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [customer, setCustomer] = useState(undefined);
 
   useEffect(() => {
     getCustomers();
   }, [getCustomers]);
 
+  const getCustomer = id => {
+    const selectedCustomer = customers.filter(cust => cust.id === id)[0];
+    setCustomer(selectedCustomer);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+    setCustomer(undefined);
+  }
+
   let content = <Loader fullPage={true} />;
 
-  if (customers.length) {
-    content = <CustomersTable data={customers} />;
+  if (customers) {
+    content = (
+      <Fragment>
+        <CustomersTable getId={getCustomer} data={customers} />
+        {customer && (
+          <SidebarModal
+            data={customer}
+            visible={isOpen}
+            onClose={closeModal}
+          />
+        )}
+      </Fragment>
+    );
   }
 
   return content;

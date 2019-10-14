@@ -41,15 +41,6 @@ const Sidebar = () => {
           <Menu.Item key="3">
             <Link to="/customers">Clientes</Link>
           </Menu.Item>
-          <Menu.Item key="4">
-            <Link to="/customers">Clientes</Link>
-          </Menu.Item>
-          <Menu.Item key="4">
-            <Link to="/customers">Clientes</Link>
-          </Menu.Item>
-          <Menu.Item key="4">
-            <Link to="/customers">Clientes</Link>
-          </Menu.Item>
         </SubMenu>
       </Menu>
     </Sider>

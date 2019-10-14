@@ -2,7 +2,7 @@
 import { GET_CUSTOMERS, GET_SINGLE_CUSTOMER } from '../types';
 
 const initialState = {
-    list: [],
+    list: undefined,
     single: undefined
 }
 
