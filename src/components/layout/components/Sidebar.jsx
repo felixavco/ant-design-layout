@@ -6,11 +6,16 @@ const { Title } = Typography;
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 
+const isAuth = true;
+
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
-  return (
-    <Sider
+  let content = null;
+
+  if(isAuth) {
+    content = (
+      <Sider
       collapsible
       collapsed={isCollapsed}
       onCollapse={() => setIsCollapsed(!isCollapsed)}
@@ -44,7 +49,10 @@ const Sidebar = () => {
         </SubMenu>
       </Menu>
     </Sider>
-  );
+    )
+  }
+
+  return content;
 };
 
 export default Sidebar;

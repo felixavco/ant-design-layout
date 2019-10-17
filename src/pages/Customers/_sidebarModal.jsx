@@ -3,7 +3,7 @@ import { Drawer } from "antd";
 
 const SidebarModal = ({ data, visible, onClose }) => {
   const { name } = data;
-  console.log(data)
+
   return (
     <Drawer
       title={name}

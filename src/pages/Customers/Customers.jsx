@@ -1,9 +1,9 @@
 import React, { useEffect, useState, Fragment } from "react";
-import Loader from "../../commons/loader/Loader";
-import CustomersTable from "./CustomersTable";
-import SidebarModal from "./SidebarModal";
+import Loader from "../../components/Loader";
+import CustomersTable from "./_customersTable";
+import SidebarModal from "./_sidebarModal";
 import { connect } from "react-redux";
-import { getCustomers } from "../../../redux/actions/customer.actions";
+import { getCustomers } from "../../redux/actions/customer.actions";
 
 const Customers = ({ getCustomers, customers }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +48,4 @@ const mapStateToProps = state => ({
   customers: state.customers.list
 });
 
-export default connect(
-  mapStateToProps,
-  { getCustomers }
-)(Customers);
+export default connect(mapStateToProps,{ getCustomers })(Customers)
