@@ -1,5 +1,5 @@
 import React, { lazy } from "react";
-import "./App.less";
+import "./styles/App.less";
 import Layout from "./components/layout/Layout";
 import { Route, Redirect } from "react-router-dom";
 
