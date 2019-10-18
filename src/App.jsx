@@ -2,6 +2,8 @@ import React, { lazy } from "react";
 import "./styles/App.less";
 import Layout from "./components/layout/Layout";
 import { Route, Redirect } from "react-router-dom";
+import 'remixicon/fonts/remixicon.css'
+
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Customers = lazy(() => import("./pages/Customers"));
