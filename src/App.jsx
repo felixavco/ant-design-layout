@@ -7,7 +7,7 @@ import 'remixicon/fonts/remixicon.css'
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Customers = lazy(() => import("./pages/Customers"));
-const NotFound = lazy(() => import("./pages/notFound/NotFound"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 function App() {
   return (
