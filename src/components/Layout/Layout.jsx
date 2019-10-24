@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
 import Loader from "../Loader";
 import ErrorBoundary from "../ErrorBoundary";
-import { BrowserRouter, Switch } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store";
 import { Provider } from "react-redux";
 import { HotKeys } from "react-hotkeys";
@@ -37,11 +37,9 @@ const Layout = ({ children }) => {
               <Sidebar />
               <AntLayout>
                 <Navbar />
-                <Switch>
-                  <Suspense fallback={loader}>
-                    <Content>{children}</Content>
-                  </Suspense>
-                </Switch>
+                <Suspense fallback={loader}>
+                  <Content>{children}</Content>
+                </Suspense>
                 <Footer />
               </AntLayout>
             </AntLayout>

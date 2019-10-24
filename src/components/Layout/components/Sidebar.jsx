@@ -31,7 +31,7 @@ const Sidebar = () => {
             {/* <Icon type="dashboard" /> */}
 
             <span>
-              <i class="ri-dashboard-fill ri-1x" />
+              <i className="ri-dashboard-fill ri-1x" />
               &nbsp;
               <Link to="/dashboard">Dashboard</Link>
             </span>
@@ -44,7 +44,7 @@ const Sidebar = () => {
                 {/* <Icon type="user" /> */}
                 <span>
                   {" "}
-                  <i class="ri-group-line ri-1x" />
+                  <i className="ri-group-line ri-1x" />
                   &nbsp;Usuarios
                 </span>
               </span>

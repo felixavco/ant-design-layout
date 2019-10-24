@@ -6,7 +6,7 @@ const Dashboard = () => {
     <section>
       <h1>Welcome to Dashboard</h1>
       <Button type="primary" shape="circle">
-      <i class="ri-search-line" />
+      <i className="ri-search-line" />
       </Button>
     </section>
   );

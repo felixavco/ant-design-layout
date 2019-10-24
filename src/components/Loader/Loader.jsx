@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Spin } from "antd";
+import { Row, Spin } from "antd";
 
 const Loader = ({ fullPage = false }) => {
   return (
@@ -9,11 +9,7 @@ const Loader = ({ fullPage = false }) => {
       justify="center"
       align="middle"
     >
-      <Col
-        span={2}
-      >
-        <Spin tip="Loading..." size="large" />
-      </Col>
+      <Spin tip="Loading..." size="large" />
     </Row>
   );
 };

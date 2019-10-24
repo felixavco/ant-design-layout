@@ -2,16 +2,17 @@ import React, { useEffect, useState, Fragment } from "react";
 import Loader from "../../components/Loader";
 import CustomersTable from "./_customersTable";
 import SidebarModal from "./_sidebarModal";
-import { connect } from "react-redux";
-import { getCustomers } from "../../redux/actions/customer.actions";
+import { useSelector } from "react-redux";
+import CustomerActions from "../../redux/actions/customer.actions";
 
-const Customers = ({ getCustomers, customers }) => {
+const Customers = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [customer, setCustomer] = useState(undefined);
+  const customers = useSelector(state => state.customers.list) 
 
   useEffect(() => {
-    getCustomers();
-  }, [getCustomers]);
+    CustomerActions.getCustomers();
+  }, []);
 
   const getCustomer = id => {
     const selectedCustomer = customers.filter(cust => cust.id === id)[0];
@@ -44,8 +45,4 @@ const Customers = ({ getCustomers, customers }) => {
   return content;
 };
 
-const mapStateToProps = state => ({
-  customers: state.customers.list
-});
-
-export default connect(mapStateToProps,{ getCustomers })(Customers)
+export default Customers
