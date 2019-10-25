@@ -3,15 +3,15 @@ import Loader from "../../components/Loader";
 import CustomersTable from "./_customersTable";
 import SidebarModal from "./_sidebarModal";
 import { useSelector } from "react-redux";
-import CustomerActions from "../../redux/actions/customer.actions";
+import { getCustomers } from "../../redux/actions/customer.actions";
 
 const Customers = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [customer, setCustomer] = useState(undefined);
-  const customers = useSelector(state => state.customers.list) 
+  const customers = useSelector(state => state.customers.list);
 
   useEffect(() => {
-    CustomerActions.getCustomers();
+    getCustomers();
   }, []);
 
   const getCustomer = id => {
@@ -23,7 +23,7 @@ const Customers = () => {
   const closeModal = () => {
     setIsOpen(false);
     setCustomer(undefined);
-  }
+  };
 
   let content = <Loader fullPage={true} />;
 
@@ -32,11 +32,7 @@ const Customers = () => {
       <Fragment>
         <CustomersTable getId={getCustomer} data={customers} />
         {customer && (
-          <SidebarModal
-            data={customer}
-            visible={isOpen}
-            onClose={closeModal}
-          />
+          <SidebarModal data={customer} visible={isOpen} onClose={closeModal} />
         )}
       </Fragment>
     );
@@ -45,4 +41,4 @@ const Customers = () => {
   return content;
 };
 
-export default Customers
+export default Customers;
